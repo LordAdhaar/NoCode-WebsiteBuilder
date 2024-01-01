@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import grapesjs from "grapesjs";
 import "./styles/main.scss";
-import gjsPresetWebpage from "grapesjs-preset-webpage";
 import gjsBasicBlocks from "grapesjs-blocks-basic";
+import grapesjsExportPlugin from "grapesjs-plugin-export"
 
 function App() {
 
@@ -11,20 +11,39 @@ function App() {
   
     const editor = grapesjs.init({
       container : "#editor",
-      plugins: [gjsPresetWebpage, gjsBasicBlocks] ,
+      plugins: [ gjsBasicBlocks, grapesjsExportPlugin] ,
       pluginOpts:{
-        gjsPresetWebpage:{},
         gjsBasicBlocks:{},
-      },
+      }, 
+
     });
+
+    editor.Panels.addPanel({
+      el: '.gjs-pn-options',
+      buttons: [
+        {
+          id: 'save-button',
+          className: 'btn-save-button',
+          label: 'Save',
+          command(editor) { 
+            console.log(editor.getHtml());
+            console.log(editor.getCss());
+            editor.runCommand("gjs-export-zip");
+          }
+        }
+      ]
+    });
+
     setEditor(editor);
+
+    
 
   }, [])
   
 
   return (
     <div className="App">
-      <div id="editor"></div>
+        <div id="editor"></div>  
     </div>
   );
 }
