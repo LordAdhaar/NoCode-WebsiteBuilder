@@ -1,4 +1,10 @@
-# How to clone and run locally
+# No Code Website Builder
+
+## Live Link
+https://custombuilder.netlify.app/
+
+## How to clone and run locally
+ 
 - open terminal and go to the folder where you want to clone the repo 
 - git clone git@github.com:LordAdhaar/website-builder.git
 - npm i react 
@@ -7,9 +13,6 @@
 - npm i grapesjs-plugin-export
 - npm start
 - go to your browser to http://localhost:3000/
-
-## Live Link
-https://custombuilder.netlify.app/
 
 ## Features
 
